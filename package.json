@@ -1,0 +1,17 @@
+{
+  "name": "bot-de-prueba",
+  "version": "1.0.0",
+  "description": "Este es un bot de pruebas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "keywords": [
+    "bot-de-discord"
+  ],
+  "author": "Siendo Miguel",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.4.1"
+  }
+}
