@@ -13,5 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^12.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
 }
