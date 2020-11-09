@@ -19,12 +19,19 @@ client.on('message', message => {
 
     if (message.content === '!ayudame') {
         message.channel.send('Este bot aun esta en fase de pruebas');
-        //Esto elimina el mensaje que se envia
+        //Esto elimina el mensaje que envia el usuario
         message.delete();
     }
 
     if(message.content === '!nuevosingresos') {
-        message.channel.send('');
+        //Aqui estamos limitando el rol que puede usar este comando
+        if(message.member.roles.cache.find(rol => rol.id === "423553208372166666")){
+            message.channel.send('Hola');
+        }
+        //Si no cumple la condicion de arriba envia lo de abajo
+        else{
+            message.channel.send("Lo siento, no tienes permiso para utilizar este comando").then(msg => msg.delete({timeout: 3000}));
+        }
         message.delete();
 
     }
