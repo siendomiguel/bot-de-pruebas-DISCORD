@@ -56,7 +56,7 @@ client.on('message', message => {
         else{
             message.channel.send("Lo siento, no tienes permiso para utilizar este comando").then(msg => msg.delete({timeout: 3000}));
         }
-        message.delete();
+        message.delete(); 
 
     }
 
