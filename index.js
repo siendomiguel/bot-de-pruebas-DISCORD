@@ -3,20 +3,20 @@ const config = require("./config.json");
 const client = new Discord.Client();
 client.login(config.BOT_TOKEN);
 
+function estado(){
+    client.user.setPresence({
+        status: "online",
+        activity: {
+            name: 'con ' + client.users.size + ' usuarios',
+            type: 'PLAYING'
+        }
+    })
+};
 
 client.on('ready', () => {
     console.log(`Ya esta encendido el Bot ${client.user.tag}!`);
     //declarando el estado del bot
-estado();
-    function estado(){
-        client.user.setPresence({
-            status: "online",
-            activity:{
-                name: "al Mercado | -ayuda",
-                type: "WATCHING"
-            }
-        });
-    }
+    estado();
   });
 
 //conectando el prefijo del bot
@@ -59,6 +59,8 @@ client.on('message', message => {
         message.delete();
 
     }
+
+
 
 
 });
