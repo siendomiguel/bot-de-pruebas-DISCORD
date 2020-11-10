@@ -1,30 +1,51 @@
-const Discord = require("discord.js")
-const config = require("./config.json")
-
+const Discord = require("discord.js");
+const config = require("./config.json");
 const client = new Discord.Client();
-client.login(config.BOT_TOKEN)
+client.login(config.BOT_TOKEN);
+
 
 client.on('ready', () => {
     console.log(`Ya esta encendido el Bot ${client.user.tag}!`);
-    client.user.setStatus('dnd');
+    //declarando el estado del bot
+estado();
+    function estado(){
+        client.user.setPresence({
+            status: "online",
+            activity:{
+                name: "al Mercado | -ayuda",
+                type: "WATCHING"
+            }
+        });
+    }
   });
+
+//conectando el prefijo del bot
+var prefix = config.prefix;
+
 
 //Se debe de indicar que el Bot este prendido para comenzar los comandos
 client.on('message', message => {
-    
+    //declarando argumentos
+    const args = message.content.slice(prefix.length).trim().split(' ');
+    const command = args.shift().toLowerCase();
+  
+    //evitando el bucle infinito o autorespuesta a otros bots
+    if (!message.content.startsWith(prefix)) return;
+    if (message.author.bot) return;
+
     //Comandos y mensajes
-    if (message.content === '!ping') {
+    if (message.content.startsWith(prefix + 'ping')) {
         //Esta es la respuesta del mensaje
         message.channel.send('pong');
     }
 
-    if (message.content === '!ayudame') {
+    if (message.content.startsWith(prefix + 'ayuda')) {
         message.channel.send('Este bot aun esta en fase de pruebas').then(msg => msg.delete({timeout: 3000}));; //esto ultimo elimina el mensaje del bot
         //Esto elimina el mensaje que envia el usuario
         message.delete();
     }
     //starcWith define con que comienza el mensaje
-    if(message.content.startsWith('nuevousuario')) {
+    if(message.content.startsWith(prefix + 'nuevousuario')) {
         //Aqui estamos limitando el rol que puede usar este comando
         if(message.member.roles.cache.find(rol => rol.id === "423553208372166666")){
         //Definimos que al usuario mencionado, le enviaremos algo
