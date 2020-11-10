@@ -7,7 +7,7 @@ function estado(){
     client.user.setPresence({
         status: "online",
         activity: {
-            name: 'con ' + client.users.size + ' usuarios',
+            name: 'con 4k usuarios',
             type: 'PLAYING'
         }
     })
